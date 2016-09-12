@@ -1,0 +1,50 @@
+
+
+A word's "Swifty" score is defined as log(N_swift / N_brown), where
+N_swift is the number of occurrences in the Swift lyric set and
+N_brown is the number of occurrences in the Brown corpus.
+
+
+Top 20 Swiftiest words: 
+1 .  wanna 3.1945831323
+2 .  wonderland 2.8903717579
+3 .  could've 2.63905732962
+4 .  jeans 2.56494935746
+5 .  'bout 2.3978952728
+6 .  ooh 2.3978952728
+7 .  starlight 2.30258509299
+8 .  whoa 2.30258509299
+9 .  nothing's 2.19722457734
+10 .  fade 2.19722457734
+11 .  wildest 2.19722457734
+12 .  gonna 2.13659995552
+13 .  brad 2.07944154168
+14 .  mmm 2.07944154168
+15 .  flashback 2.07944154168
+16 .  love's 2.01490302054
+17 .  gotta 1.85629799037
+18 .  sleepless 1.79175946923
+19 .  daddy's 1.70474809224
+20 .  one-way 1.60943791243
+
+Top 20 least-Swifty words: 
+1 .  which -6.56835877084
+2 .  such -5.786130216
+3 .  most -5.66901848222
+4 .  state -5.5947113796
+5 .  its -5.58134577032
+6 .  great -5.11349267954
+7 .  against -5.05465217951
+8 .  three -5.02716459605
+9 .  fact -5.00394630595
+10 .  water -4.9994619935
+11 .  their -4.94502017024
+12 .  point -4.88027347623
+13 .  national -4.8283137373
+14 .  has -4.80279078007
+15 .  children -4.77350550081
+16 .  war -4.75359019111
+17 .  family -4.70350608671
+18 .  less -4.69363883398
+19 .  country -4.68213122712
+20 .  sense -4.64118062351
