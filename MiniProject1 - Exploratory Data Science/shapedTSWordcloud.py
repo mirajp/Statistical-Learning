@@ -8,7 +8,6 @@ d = path.dirname(__file__)
 # Read the whole text.
 text = open(path.join(d, 'alllyrics.txt')).read()
 
-#ts_mask = Image.open("/afs/ee.cooper.edu/user/p/a/patel6/Statistical-Learning/MiniProject1 - Exploratory Data Science/tscolor.png")
 ts_mask = np.array(Image.open(path.join(d, "ts_mask.png")))
 image_colors = ImageColorGenerator(ts_mask)
 
