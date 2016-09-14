@@ -99,14 +99,14 @@
 d = path.dirname(__file__)
 
 <span class="comment"># Read the whole text.</span>
-text = open(path.join(d, <span class="string">'alllyrics.txt'</span>)).read()
+text = open(path.join(d, <span class="string">"alllyrics.txt"</span>)).read()
 
 <span class="comment"># Generate a word cloud image</span>
 wordcloud = WordCloud().generate(text)
 
 <span class="comment"># Display the generated image:</span>
 plt.imshow(wordcloud)
-plt.axis("off")
+plt.axis(<span class="string">"off"</span>)
 plt.show()
 </pre>
 				<div
@@ -125,18 +125,18 @@ plt.show()
 d = path.dirname(__file__)
 
 <span class="comment"># Read the whole text.</span>
-text = open(path.join(d, <span class="string">'alllyrics.txt'</span>)).read()
-ts_mask = np.array(Image.open(path.join(d, "ts_mask.png")))
+text = open(path.join(d, <span class="string">"alllyrics.txt"</span>)).read()
+ts_mask = np.array(Image.open(path.join(d, <span class="string">"ts_mask.png"</span>)))
 image_colors = ImageColorGenerator(ts_mask)
 
 <span class="comment"># Generate a word cloud image</span>
-wordcloud = WordCloud(background_color="white", mask=ts_mask)
+wordcloud = WordCloud(background_color=<span class="string">"white"</span>, mask=ts_mask)
 wordcloud.generate(text)
 wordcloud.recolor(color_func=image_colors)
 
 <span class="comment"># Display the generated image:</span>
 plt.imshow(wordcloud)
-plt.axis("off")
+plt.axis(<span class="string">"off"</span>)
 plt.show()
 </pre>
 				<div
