@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!-- The CSS for this HTML was copied from a MATLAB publisher output, and slightly modified. -->
+		<title> Analysis of Taylor Swift Lyrics </title>
+		<style type="text/css">
+		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+		html { min-height:100%; margin-bottom:1px; }
+		html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+		html body td { vertical-align:top; text-align:left; }
+
+		h1 { padding:0px; margin:0px 0px 10px; font-family:Times New Roman, Times, serif; font-size:2.3em; color:#d55000; font-weight:bold; line-height:120%; }
+		h2 { padding:0px; margin:0px 0px 8px; font-family:Times New Roman, Times, serif; font-size:1.9em; font-weight:bold; line-height:100%; }
+		h3 { padding:0px; margin:0px 0px 5px; font-family:Times New Roman, Times, serif; font-size:1.7em; font-weight:bold; line-height:140%; }
+		.subtitle { padding:0px; margin:0px 0px 5px; font-family:Times New Roman, Times, serif; font-size:2em; color:#e66000; line-height:140%; }
+		.subsection { padding:0px; margin:0px 0px 0px; font-family:Times New Roman, Times, serif; font-size:1.5em; line-height:120%; }
+		
+		
+		a { color:#005fce; text-decoration:none; }
+		a:hover { color:#005fce; text-decoration:underline; }
+		a:visited { color:#004aa0; text-decoration:none; }
+
+		p { padding:0px; margin:0px 0px 20px; }
+		img { padding:0px; margin:0px 0px 20px; border:none; }
+		p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+		ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+		ul li { padding:0px; margin:0px 0px 7px 0px; }
+		ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+		ul li ol li { list-style:decimal; }
+		ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+		ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+		ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+		ol li ol li { list-style-type:lower-alpha; }
+		ol li ul { padding-top:7px; }
+		ol li ul li { list-style:square; }
+
+		.content { line-height:140%; padding: 20px; }
+
+		pre, code { font-size:12px; }
+		tt { font-size: 1.2em; }
+		pre { margin:0px 0px 20px; }
+		pre.codeinput { font-family:Lucida Console, Monaco, monospace; padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+		pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+		pre.error { color:red; }
+
+		@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+		span.keyword { color:#0000FF }
+		span.comment { color:#228B22 }
+		span.string { color:#A020F0 }
+		span.untermstring { color:#B20000 }
+		span.syscmd { color:#B28C00 }
+
+		.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+		.footer p { margin:0px; }
+		.footer a { color:#878787; }
+		.footer a:hover { color:#878787; text-decoration:underline; }
+		.footer a:visited { color:#878787; }
+
+		table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+		table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+		
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<h1>Statistical Learning, Mini-Project 1: Exploratory Data Science</h1>
+			<h2>Analysis of Taylor Swift Lyrics</h2>
+			<h3>by: Max Howald, Frank Longueira, and Miraj Patel</h3>
+			<br><br>
+			
+			<div class="subtitle">The Purpose</div>
+			<div class="subsection">
+				Many attribute the success of Taylor Swift in pop culture and the music industry to her catchy tunes and resonating lyrics. It is a well
+				known fact that many of her songs are about her relationships, past, present, and possibly even her hopes for future relationships. What
+				exactly makes her music so special? Is it relatability? Simplicity and memorability of her lyrics? Or just inexplicable genius? This data
+				science adventure aims to take a cursory glance at her lyrics to help understand the formula to her success.
+			</div>
+			<br><br>
+			
+			<div class="subtitle">The Data</div>
+			<div class="subsection">
+				The lyrics for all of Taylor Swift's songs were scraped from <a href="http://www.azlyrics.com/lyrics/taylorswift">AZ Lyric's Taylor Swift song collection</a>
+				and concatenated together into a single file (<a href="https://raw.githubusercontent.com/mirajp/Statistical-Learning/master/MiniProject1%20-%20Exploratory%20Data%20Science/alllyrics.txt">alllyrics.txt</a>) after removing noise such as html tags, and misc notes about chorus and repetition.
+			</div>
+			<br><br>
+			
+			<div class="subtitle">Wordclouds</div>
+			<div class="subsection">
+				Our first visualization was a wordcloud using the aptly named Python module <a href="http://amueller.github.io/word_cloud/">wordcloud</a>. <br>
+				The following code allowed us to make the wordcloud in <b>Figure 1</b>:<br>
+				<pre class="codeinput"><span class="keyword">from</span> os <span class="keyword">import</span> path
+<span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+
+d = path.dirname(__file__)
+
+<span class="comment"># Read the whole text.</span>
+text = open(path.join(d, <span class="string">'alllyrics.txt'</span>)).read()
+
+<span class="comment"># Generate a word cloud image</span>
+wordcloud = WordCloud().generate(text)
+
+<span class="comment"># Display the generated image:</span>
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.show()
+</pre>
+				<div
+					style="width: 650px; height: 350px; background-position: center center; background-repeat: no-repeat; background-image: url('https://raw.githubusercontent.com/mirajp/Statistical-Learning/master/MiniProject1%20-%20Exploratory%20Data%20Science/wordcloud_1.png');">
+				</div>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>Figure 1</b>: Wordcloud showing the 200 most-frequent words in Taylor Swift discography.
+				<br><br>
+				The wordcloud was then tweaked for fun to take on the shape of <a href="https://raw.githubusercontent.com/mirajp/Statistical-Learning/master/MiniProject1%20-%20Exploratory%20Data%20Science/ts_mask.png">Taylor Swift</a> herself:<br>
+				<pre class="codeinput"><span class="keyword">from</span> os <span class="keyword">import</span> path
+<span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud, ImageColorGenerator
+<span class="keyword">from</span> PIL <span class="keyword">import</span> Image
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+d = path.dirname(__file__)
+
+<span class="comment"># Read the whole text.</span>
+text = open(path.join(d, <span class="string">'alllyrics.txt'</span>)).read()
+ts_mask = np.array(Image.open(path.join(d, "ts_mask.png")))
+image_colors = ImageColorGenerator(ts_mask)
+
+<span class="comment"># Generate a word cloud image</span>
+wordcloud = WordCloud(background_color="white", mask=ts_mask)
+wordcloud.generate(text)
+wordcloud.recolor(color_func=image_colors)
+
+<span class="comment"># Display the generated image:</span>
+plt.imshow(wordcloud)
+plt.axis("off")
+plt.show()
+</pre>
+				<div
+					style="width: 350px; height: 425px; background-position: center center; background-repeat: no-repeat; background-image: url('https://raw.githubusercontent.com/mirajp/Statistical-Learning/master/MiniProject1%20-%20Exploratory%20Data%20Science/wordcloud_masksrccolors.png');">
+				</div>
+				<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<b>Figure 2</b>: Wordcloud modified to use an image of Taylor Swift as the 'mask'.
+			</div>
+			<br><br>
+			
+			<div class="subtitle">Swiftiness</div>
+			
+
+			
+			<pre class="codeoutput">Some gray output.</pre>
+		</div>
+	</body>
+</html>
