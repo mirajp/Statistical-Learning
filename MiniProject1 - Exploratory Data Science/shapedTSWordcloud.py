@@ -8,7 +8,7 @@ d = path.dirname(__file__)
 # Read the whole text.
 text = open(path.join(d, 'alllyrics.txt')).read()
 
-ts_mask = np.array(Image.open(path.join(d, "ts_mask.2png")))
+ts_mask = np.array(Image.open(path.join(d, "ts_mask.png")))
 image_colors = ImageColorGenerator(ts_mask)
 
 # Generate a word cloud image
