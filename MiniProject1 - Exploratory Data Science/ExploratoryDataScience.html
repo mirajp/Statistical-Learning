@@ -1,69 +1,74 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<!-- The CSS for this HTML was copied from a MATLAB publisher output, and slightly modified. -->
 		<title> Analysis of Taylor Swift Lyrics </title>
 		<style type="text/css">
-		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
-
-		html { min-height:100%; margin-bottom:1px; }
-		html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
-		html body td { vertical-align:top; text-align:left; }
-
-		h1 { padding:0px; margin:0px 0px 10px; font-family:Times New Roman, Times, serif; font-size:2.3em; color:#d55000; font-weight:bold; line-height:120%; }
-		h2 { padding:0px; margin:0px 0px 8px; font-family:Times New Roman, Times, serif; font-size:1.9em; font-weight:bold; line-height:100%; }
-		h3 { padding:0px; margin:0px 0px 5px; font-family:Times New Roman, Times, serif; font-size:1.7em; font-weight:bold; line-height:140%; }
-		.subtitle { padding:0px; margin:0px 0px 5px; font-family:Times New Roman, Times, serif; font-size:2em; color:#e66000; line-height:140%; }
-		.subsection { padding:0px; margin:0px 0px 0px; font-family:Times New Roman, Times, serif; font-size:1.5em; line-height:120%; }
-		
-		
-		a { color:#005fce; text-decoration:none; }
-		a:hover { color:#005fce; text-decoration:underline; }
-		a:visited { color:#004aa0; text-decoration:none; }
-
-		p { padding:0px; margin:0px 0px 20px; }
-		img { padding:0px; margin:0px 0px 20px; border:none; }
-		p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
-
-		ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
-		ul li { padding:0px; margin:0px 0px 7px 0px; }
-		ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
-		ul li ol li { list-style:decimal; }
-		ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
-		ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
-		ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
-		ol li ol li { list-style-type:lower-alpha; }
-		ol li ul { padding-top:7px; }
-		ol li ul li { list-style:square; }
-
-		.content { line-height:140%; padding: 20px; }
-
-		pre, code { font-size:12px; }
-		tt { font-size: 1.2em; }
-		pre { margin:0px 0px 20px; }
-		pre.codeinput { font-family:Lucida Console, Monaco, monospace; padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
-		pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
-		pre.error { color:red; }
-
-		@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
-
-		span.keyword { color:#0000FF }
-		span.comment { color:#228B22 }
-		span.string { color:#A020F0 }
-		span.untermstring { color:#B20000 }
-		span.syscmd { color:#B28C00 }
-
-		.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
-		.footer p { margin:0px; }
-		.footer a { color:#878787; }
-		.footer a:hover { color:#878787; text-decoration:underline; }
-		.footer a:visited { color:#878787; }
-
-		table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
-		table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
-		
+  		html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+  
+  		html { min-height:100%; margin-bottom:1px; }
+  		html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+  		html body td { vertical-align:top; text-align:left; }
+  
+  		h1 { padding:0px; margin:0px 0px 10px; font-family:Times New Roman, Times, serif; font-size:2.3em; color:#d55000; font-weight:bold; line-height:120%; }
+  		h2 { padding:0px; margin:0px 0px 8px; font-family:Times New Roman, Times, serif; font-size:1.9em; font-weight:bold; line-height:100%; }
+  		h3 { padding:0px; margin:0px 0px 5px; font-family:Times New Roman, Times, serif; font-size:1.7em; font-weight:bold; line-height:140%; }
+  		.subtitle { padding:0px; margin:0px 0px 5px; font-family:Times New Roman, Times, serif; font-size:2em; color:#e66000; line-height:140%; }
+  		.subsection { padding:0px; margin:0px 0px 0px; font-family:Times New Roman, Times, serif; font-size:1.5em; line-height:120%; }
+  		
+  		
+  		a { color:#005fce; text-decoration:none; }
+  		a:hover { color:#005fce; text-decoration:underline; }
+  		a:visited { color:#004aa0; text-decoration:none; }
+  
+  		p { padding:0px; margin:0px 0px 20px; }
+  		img { padding:0px; margin:0px 0px 20px; border:none; }
+  		p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+  
+  		ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+  		ul li { padding:0px; margin:0px 0px 7px 0px; }
+  		ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+  		ul li ol li { list-style:decimal; }
+  		ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+  		ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+  		ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+  		ol li ol li { list-style-type:lower-alpha; }
+  		ol li ul { padding-top:7px; }
+  		ol li ul li { list-style:square; }
+  
+  		.content { line-height:140%; padding: 20px; }
+  
+  		pre, code { font-size:12px; }
+  		tt { font-size: 1.2em; }
+  		pre { margin:0px 0px 20px; }
+  		pre.codeinput { font-family:Lucida Console, Monaco, monospace; padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+  		pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+  		pre.error { color:red; }
+  
+  		@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+  
+  		span.keyword { color:#0000FF }
+  		span.comment { color:#228B22 }
+  		span.string { color:#A020F0 }
+  		span.untermstring { color:#B20000 }
+  		span.syscmd { color:#B28C00 }
+  
+  		.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+  		.footer p { margin:0px; }
+  		.footer a { color:#878787; }
+  		.footer a:hover { color:#878787; text-decoration:underline; }
+  		.footer a:visited { color:#878787; }
+  
+  		table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+  		table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
 		</style>
+		<script type="text/x-mathjax-config">
+      MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+    </script>
 	</head>
 	<body>
 		<div class="content">
@@ -74,17 +79,13 @@
 			
 			<div class="subtitle">The Purpose</div>
 			<div class="subsection">
-				Many attribute the success of Taylor Swift in pop culture and the music industry to her catchy tunes and resonating lyrics. It is a well
-				known fact that many of her songs are about her relationships, past, present, and possibly even her hopes for future relationships. What
-				exactly makes her music so special? Is it relatability? Simplicity and memorability of her lyrics? Or just inexplicable genius? This data
-				science adventure aims to take a cursory glance at her lyrics to help understand the formula to her success.
+				Many attribute the success of Taylor Swift in pop culture and the music industry to her catchy tunes and resonating lyrics. It is a well known fact that many of her songs are about her relationships, past, present, and possibly even her hopes for future relationships. What exactly makes her music so special? Is it relatability? Simplicity and memorability of her lyrics? Or just inexplicable genius? This data science adventure aims to take a cursory glance at her lyrics to help understand the formula to her success.
 			</div>
 			<br><br>
 			
 			<div class="subtitle">The Data</div>
 			<div class="subsection">
-				The lyrics for all of Taylor Swift's songs were scraped from <a href="http://www.azlyrics.com/lyrics/taylorswift">AZ Lyric's Taylor Swift song collection</a>
-				and concatenated together into a single file (<a href="https://raw.githubusercontent.com/mirajp/Statistical-Learning/master/MiniProject1%20-%20Exploratory%20Data%20Science/alllyrics.txt">alllyrics.txt</a>) after removing noise such as html tags, and misc notes about chorus and repetition.
+				The lyrics for all of Taylor Swift's songs were scraped from <a href="http://www.azlyrics.com/lyrics/taylorswift">AZ Lyric's Taylor Swift song collection</a> and concatenated together into a single file (<a href="./alllyrics.txt">alllyrics.txt</a>) after removing noise such as html tags, and misc notes about chorus and repetition.
 			</div>
 			<br><br>
 			
@@ -110,12 +111,12 @@ plt.axis(<span class="string">"off"</span>)
 plt.show()
 </pre>
 				<div
-					style="width: 650px; height: 350px; background-position: center center; background-repeat: no-repeat; background-image: url('https://raw.githubusercontent.com/mirajp/Statistical-Learning/master/MiniProject1%20-%20Exploratory%20Data%20Science/wordcloud_1.png');">
+					style="width: 650px; height: 350px; background-position: center center; background-repeat: no-repeat; background-image: url('./wordcloud_1.png');">
 				</div>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<b>Figure 1</b>: Wordcloud showing the 200 most-frequent words in Taylor Swift discography.
 				<br><br>
-				The wordcloud was then tweaked for fun to take on the shape of <a href="https://raw.githubusercontent.com/mirajp/Statistical-Learning/master/MiniProject1%20-%20Exploratory%20Data%20Science/ts_mask.png">Taylor Swift</a> herself:<br>
+				The wordcloud was then tweaked for fun to take on the shape of <a href="./ts_mask.png">Taylor Swift</a> herself:<br>
 				<pre class="codeinput"><span class="keyword">from</span> os <span class="keyword">import</span> path
 <span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud, ImageColorGenerator
 <span class="keyword">from</span> PIL <span class="keyword">import</span> Image
@@ -140,17 +141,368 @@ plt.axis(<span class="string">"off"</span>)
 plt.show()
 </pre>
 				<div
-					style="width: 350px; height: 425px; background-position: center center; background-repeat: no-repeat; background-image: url('https://raw.githubusercontent.com/mirajp/Statistical-Learning/master/MiniProject1%20-%20Exploratory%20Data%20Science/wordcloud_masksrccolors.png');">
+					style="width: 350px; height: 425px; background-position: center center; background-repeat: no-repeat; background-image: url('./wordcloud_masksrccolors.png');">
 				</div>
 				<br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<b>Figure 2</b>: Wordcloud modified to use an image of Taylor Swift as the 'mask'.
 			</div>
 			<br><br>
 			
 			<div class="subtitle">Swiftiness</div>
-			
+			<div class="subsection">
+			   Looking at the wordclouds gives us a good feel of the most common words in Taylor Swift's songs. However, in order to determine if they truly capture the essence of the Taylor Swift's style, the made-up "Swifty" (\(S_{w}\)) score is used to identify the most and least significant words in Taylor Swift's lyrics. The a high Swifty score is indicative that the wordappears quite often in Taylor Swift's songs relative to how often it usually appears in normal English language. To estimate how often a certain word appears in the English language, the
+			   <a href="http://www.nltk.org/book/ch02.html">Brown corpus</a> is used to model English language.
+			   \[S_{w} = \log{\frac{N^{Swift}_{w}}{N^{Brown}_{w}}}\] <br>
+			   \(S_{w}\) is the Swift score <br>
+			   \(N^{Swift}_{w}\) is the number of times word \(w\) appears in our Taylor Swift corpus <br>
+			   \(N^{Brown}_{w}\) is the number of times word \(w\) appears in the Brown text corpus <br>
+			   <br>
+			   
+			   <table id="SwiftyFindings" style="margin:20px">
+			     <thead> <tr>
+			       <th><h4>The Most Swifty Words</h4></th>
+			       <th><h4>The Least Swifty Words</h4></th>
+			     </tr> </thead>
+  			   <tbody><tr>
+  			     <td>
+      			   <table id="MostSwiftyWords">
+      			     <col width="50">
+      			     <col width="100">
+      			     <col width="125">
+      			     <thead> <tr>
+      			       <th>Rank</th>
+      			       <th>Word</th>
+      			       <th>Swiftiness</th>
+      			     </tr> </thead>
+      			     <tbody>
+                  <tr>
+                  <td>1</td>
+                  <td>wanna</td>
+                  <td>3.1945831323</td>
+                  </tr>
+                  <tr><td>2</td>
+                  <td>wonderland</td>
+                  <td>2.8903717579</td>
+                  </tr>
+                  <tr><td>3</td>
+                  <td>could&#39;ve</td>
+                  <td>2.63905732962</td>
+                  </tr>
+                  <tr><td>4</td>
+                  <td>jeans</td>
+                  <td>2.56494935746</td>
+                  </tr>
+                  <tr><td>5</td>
+                  <td>&#39;bout</td>
+                  <td>2.3978952728</td>
+                  </tr>
+                  <tr><td>6</td>
+                  <td>ooh</td>
+                  <td>2.3978952728</td>
+                  </tr>
+                  <tr><td>7</td>
+                  <td>starlight</td>
+                  <td>2.30258509299</td>
+                  </tr>
+                  <tr><td>8</td>
+                  <td>whoa</td>
+                  <td>2.30258509299</td>
+                  </tr>
+                  <tr><td>9</td>
+                  <td>nothing&#39;s</td>
+                  <td>2.19722457734</td>
+                  </tr>
+                  <tr><td>10</td>
+                  <td>fade</td>
+                  <td>2.19722457734</td>
+                  </tr>
+                  <tr><td>11</td>
+                  <td>wildest</td>
+                  <td>2.19722457734</td>
+                  </tr>
+                  <tr><td>12</td>
+                  <td>gonna</td>
+                  <td>2.13659995552</td>
+                  </tr>
+                  <tr><td>13</td>
+                  <td>brad</td>
+                  <td>2.07944154168</td>
+                  </tr>
+                  <tr><td>14</td>
+                  <td>mmm</td>
+                  <td>2.07944154168</td>
+                  </tr>
+                  <tr><td>15</td>
+                  <td>flashback</td>
+                  <td>2.07944154168</td>
+                  </tr>
+                  <tr><td>16</td>
+                  <td>love&#39;s</td>
+                  <td>2.01490302054</td>
+                  </tr>
+                  <tr><td>17</td>
+                  <td>gotta</td>
+                  <td>1.85629799037</td>
+                  </tr>
+                  <tr><td>18</td>
+                  <td>sleepless</td>
+                  <td>1.79175946923</td>
+                  </tr>
+                  <tr><td>19</td>
+                  <td>daddy&#39;s</td>
+                  <td>1.70474809224</td>
+                  </tr>
+                  <tr><td>20</td>
+                  <td>one-way</td>
+                  <td>1.60943791243</td>
+                  </tr>
+                  </tbody>
+      			    </table>
+  			      </td>
+  			      <td>
+  			        <table id="LeastSwiftyWords">
+      			     <col width="50">
+      			     <col width="100">
+      			     <col width="125">
+      			     <thead> <tr>
+      			       <th>Rank</th>
+      			       <th>Word</th>
+      			       <th>Swiftiness</th>
+      			     </tr> </thead>
+                 <tbody>
+                  <tr>
+                  <td>1</td>
+                  <td>which</td>
+                  <td>-6.56835877084</td>
+                  </tr>
+                  <tr><td>2</td>
+                  <td>such</td>
+                  <td>-5.786130216</td>
+                  </tr>
+                  <tr><td>3</td>
+                  <td>most</td>
+                  <td>-5.66901848222</td>
+                  </tr>
+                  <tr><td>4</td>
+                  <td>state</td>
+                  <td>-5.5947113796</td>
+                  </tr>
+                  <tr><td>5</td>
+                  <td>its</td>
+                  <td>-5.58134577032</td>
+                  </tr>
+                  <tr><td>6</td>
+                  <td>great</td>
+                  <td>-5.11349267954</td>
+                  </tr>
+                  <tr><td>7</td>
+                  <td>against</td>
+                  <td>-5.05465217951</td>
+                  </tr>
+                  <tr><td>8</td>
+                  <td>three</td>
+                  <td>-5.02716459605</td>
+                  </tr>
+                  <tr><td>9</td>
+                  <td>fact</td>
+                  <td>-5.00394630595</td>
+                  </tr>
+                  <tr><td>10</td>
+                  <td>water</td>
+                  <td>-4.9994619935</td>
+                  </tr>
+                  <tr><td>11</td>
+                  <td>their</td>
+                  <td>-4.94502017024</td>
+                  </tr>
+                  <tr><td>12</td>
+                  <td>point</td>
+                  <td>-4.88027347623</td>
+                  </tr>
+                  <tr><td>13</td>
+                  <td>national</td>
+                  <td>-4.8283137373</td>
+                  </tr>
+                  <tr><td>14</td>
+                  <td>has</td>
+                  <td>-4.80279078007</td>
+                  </tr>
+                  <tr><td>15</td>
+                  <td>children</td>
+                  <td>-4.77350550081</td>
+                  </tr>
+                  <tr><td>16</td>
+                  <td>war</td>
+                  <td>-4.75359019111</td>
+                  </tr>
+                  <tr><td>17</td>
+                  <td>family</td>
+                  <td>-4.70350608671</td>
+                  </tr>
+                  <tr><td>18</td>
+                  <td>less</td>
+                  <td>-4.69363883398</td>
+                  </tr>
+                  <tr><td>19</td>
+                  <td>country</td>
+                  <td>-4.68213122712</td>
+                  </tr>
+                  <tr><td>20</td>
+                  <td>sense</td>
+                  <td>-4.64118062351</td>
+                  </tr>
+                 </tbody>
+      			   </table>
+  			      </td>
+  			      </tr> </tbody>
+  			 </table>
+  			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			 <b>Figure 3</b>: Tables highlighting 20 of the most Swifty words and 20 of the least Swifty words.
+  			 <br><br>
+  			 <pre class="codeinput"><span class="keyword">from</span> nltk.corpus <span class="keyword">import</span> brown
+<span class="keyword">from</span> collections <span class="keyword">import</span> Counter
+<span class="keyword">from</span> itertools <span class="keyword">import</span> *
+<span class="keyword">from</span> string <span class="keyword">import</span> lower
+<span class="keyword">import</span> operator
+<span class="keyword">from</span> math <span class="keyword">import</span> log
 
+def print_list(ls):
+    for word_count, i in zip(ls, range(1, 21)):
+        
+        print i, <span class="string">". "</span>, word_count[0], word_count[1]
+
+<span class="keyword">with</span> open(<span class="string">"alllyrics.txt"</span>) <span class="keyword">as</span> f:
+    swift_words = map(lower, f.read().split())
+
+    
+swift_word_counts = Counter(swift_words)
+brown_word_counts = Counter(map(lower, brown.words()))
+swifty_scores = {}
+
+for word, count in swift_word_counts.iteritems():
+    if (count >= 3):
+        brown_count = brown_word_counts[word]
+        if (brown_count > 0):
+            swifty_scores[word] = log(count / float(brown_count))
+
+
+sorted_scores = sorted(swifty_scores.items(), key=operator.itemgetter(1))
+
+print <span class="string">"""
+A word's "Swifty" score is defined as log(N_swift / N_brown), where
+N_swift is the number of occurrences in the Swift lyric set and
+N_brown is the number of occurrences in the Brown corpus.
+"""</span>
+
+print <span class="string">"Top 20 Swiftiest words: "</span>
+top_20 = sorted_scores[-20:]
+top_20.reverse()
+print_list(top_20)
+print <span class="string">"Top 20 least-Swifty words: "</span>
+print_list(sorted_scores[0:20])
+</pre>
+			</div>
+			<br><br>
+			<div class="subtitle">Pronoun Usage</div>
+			<div class="subsection">
+          Since most of Taylor Swift's songs are about interpersonal relationships, love, friendship, and hate, the pronoun usage in her songs is also an interesting thing to note. <b>Figure 4</b> below shows the most frequently used pronouns in her lyrics. Some of the pronouns listed are obvious go-tos for someone who writes about love a lot <i>(e.g. 'I', 'you', 'we', 'he')</i>.
+          <br><a href="./personal_pronoun_analysis.py">The code is located here.</a>
+          <br>
+          
+          <table id="PronounTable" style="margin:20px">
+            <col width="50">
+            <col width="100">
+            <col width="100">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Word</th>
+                <th>Frequency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>I</td>
+                <td>3240</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>you</td>
+                <td>3231</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>me</td>
+                <td>952</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>my</td>
+                <td>593</td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>we</td>
+                <td>521</td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>your</td>
+                <td>518</td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>he</td>
+                <td>234</td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>she</td>
+                <td>209</td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td>they</td>
+                <td>139</td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td>her</td>
+                <td>97</td>
+              </tr>
+              <tr>
+                <td>11</td>
+                <td>our</td>
+                <td>73</td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td>him</td>
+                <td>66</td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td>them</td>
+                <td>49</td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td>us</td>
+                <td>43</td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td>their</td>
+                <td>19</td>
+              </tr>
+            </tbody>
+          </table>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  			 <b>Figure 4</b>: Table listing the frequency of the 15 most common pronouns in Taylor Swift's lyrics.
+      </div>
+      <br><br>
 			
 			<pre class="codeoutput">Some gray output.</pre>
 		</div>
