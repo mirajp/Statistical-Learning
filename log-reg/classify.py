@@ -1,14 +1,14 @@
 #!/usr/bin/env python
-
-NEGATIVE_CLASS = 'B'
-POSITIVE_CLASS = 'M'
-
-
-
 import sys
+import collections
+import math
 from sklearn.linear_model import SGDClassifier 
 from sklearn.preprocessing import StandardScaler
 
+
+NEGATIVE_CLASS = 'B' # Benign
+POSITIVE_CLASS = 'M' # Malignant
+eta0 = 0.1
 
 def main():
     if len(sys.argv) != 3:
@@ -31,11 +31,38 @@ def main():
     scaled_test_features = scaler.transform(test_features)
     
     ### classify and print stats for the baseline classifier ###
+    print "SKLEARN BUILT-IN CLASSIFIER RESULTS"
+    print clf
     predictions = clf.predict(scaled_test_features)
     print_accuracy(test_classes, predictions)
 
-    
-    
+    ### Train my classifier ###
+    weights = train(scaled_features, classes)
+    ### Test my classifier ###
+    print "\n\nMY CLASSIFIER RESULTS"
+    my_predictions = [classify(weights, instance) for instance in scaled_test_features]
+    print_accuracy(test_classes, my_predictions)
+
+def train(features, classes):
+    t = 1
+    weights = collections.defaultdict(float)
+
+    for attributes, classification in zip(features, classes):
+        update(weights, attributes, float(classification), eta0 / (1 + t / float(len(features))))
+        t += 1
+    return weights
+
+
+def update(weights, attributes, classification, eta):
+    a = sum([weights[x] for x in attributes])
+    g = ((1. / (1. + math.exp(-a))) - classification) if -100. < a else (0. - classification)
+    for x in attributes:
+        weights[x] -= eta * g
+
+
+def classify(W, X):
+    return 1 if 0. < sum([W[x] for x in X]) else 0
+
 def print_accuracy(ground_truth, predictions):
     true_pos, true_neg, false_pos, false_neg = 0,0,0,0
 
