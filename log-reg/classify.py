@@ -8,13 +8,14 @@ import numpy as np
 
 NEGATIVE_CLASS = 'B' # Benign
 POSITIVE_CLASS = 'M' # Malignant
+
+# These parameters seemed to work well...
 eta0 = 0.005
-max_iterations = 100
-stopping_val = 1e-1
-epsilon = 1e-24
+max_iterations = 300
+stopping_val = 60
 # Only set one (or 0) of these to true at a time...
 L1_PENALTY = False
-L2_PENALTY = False
+L2_PENALTY = True
 
 def main():
     if len(sys.argv) != 3:
@@ -38,16 +39,19 @@ def main():
     
     ### classify and print stats for the baseline classifier ###
     print "SKLEARN BUILT-IN CLASSIFIER RESULTS"
-    print clf
+    print "Settings: ", clf
     predictions = clf.predict(scaled_test_features)
     print_accuracy(test_classes, predictions)
 
     ### Train my classifier ###
     scaled_features_plus_intercept = np.ones((scaled_features.shape[0], scaled_features.shape[1] + 1))
     scaled_features_plus_intercept[:, 1:] = scaled_features
-    weights = train(scaled_features_plus_intercept, classes)
+    weights, t = train(scaled_features_plus_intercept, classes)
+    
     ### Test my classifier ###
     print "\n\nMY CLASSIFIER RESULTS"
+    print "Trained for", t, "iterations."
+    print "Learing rate:", eta0
     scaled_test_features_plus_intercept = np.ones((scaled_test_features.shape[0], scaled_test_features.shape[1] + 1))
     scaled_test_features_plus_intercept[:, 1:] = scaled_test_features
 
@@ -55,36 +59,25 @@ def main():
     print_accuracy(test_classes, my_predictions)
 
 def train(X, classes):
-    weights = np.zeros(((X.shape[1]), 1))
+    # randomly initialize weights between 0 and 1.
+    weights = np.random.rand((X.shape[1]), 1)
     diff = stopping_val + 1.
 
     total_ll = total_log_likelihood(X, classes, weights)
     
     t = 0
     rows = range(len(X))
-    
     while (diff > stopping_val) and (t < max_iterations):
-        print diff
         for i in xrange(len(X)):
             log_prob = 1 / (1 + np.exp(-X[i,:].dot(weights)))
             error = classes[i] - log_prob
             error_product = (X[i, :] * error).reshape(X.shape[1],1)
-            if L1_PENALTY or L2_PENALTY:
-                gradient = error_product.sum(axis=0).reshape(weights.shape)
-            if L1_PENALTY:
-                gradient -= np.sign(weights)
-            if L2_PENALTY:
-                gradient -= weights
-
-            if L1_PENALTY or L2_PENALTY:
-                weights = weights + eta0 * gradient
-            else:
-                weights = weights + eta0 * error_product
+            weights = weights + eta0 * error_product
 
         new_ll = total_log_likelihood(X, classes, weights)
         diff = np.abs(new_ll - total_ll)
         total_ll = new_ll
-
+        
         np.random.shuffle(rows)
         X = X[rows, :]
         new_classes = [None] * len(classes)
@@ -92,13 +85,16 @@ def train(X, classes):
             new_classes[i] = classes[rows[i]]
         classes = new_classes
         t += 1
-    print "Stopped after", t, "iterations."
-    return weights
+    return weights, t
 
 
 def total_log_likelihood(X, Y, W):
+
     probs = 1 / (1 + np.exp(-X.dot(W)))
     ones_arr = np.ones((1, probs.shape[1]))
+
+    # epsilon avoid log of negatives or 0...
+    epsilon = 1e-24
     log_likelihoods = Y * np.log(probs + epsilon) + (ones_arr - Y) * np.log(ones_arr - probs + epsilon)
     total_ll = -1 * log_likelihoods.sum()
 
@@ -109,7 +105,7 @@ def total_log_likelihood(X, Y, W):
     return total_ll
 
 
-
+# calculate the probability and classify as malignant if p > 0.5
 def classify(W, X):
     return 1 if 1 / (1 + np.exp(-X.dot(W))) > 0.5 else 0
 
