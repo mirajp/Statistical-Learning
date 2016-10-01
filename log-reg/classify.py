@@ -4,11 +4,17 @@ import collections
 import math
 from sklearn.linear_model import SGDClassifier 
 from sklearn.preprocessing import StandardScaler
-
+import numpy as np
 
 NEGATIVE_CLASS = 'B' # Benign
 POSITIVE_CLASS = 'M' # Malignant
-eta0 = 0.1
+eta0 = 0.005
+max_iterations = 100
+stopping_val = 1e-1
+epsilon = 1e-24
+# Only set one (or 0) of these to true at a time...
+L1_PENALTY = False
+L2_PENALTY = False
 
 def main():
     if len(sys.argv) != 3:
@@ -37,31 +43,75 @@ def main():
     print_accuracy(test_classes, predictions)
 
     ### Train my classifier ###
-    weights = train(scaled_features, classes)
+    scaled_features_plus_intercept = np.ones((scaled_features.shape[0], scaled_features.shape[1] + 1))
+    scaled_features_plus_intercept[:, 1:] = scaled_features
+    weights = train(scaled_features_plus_intercept, classes)
     ### Test my classifier ###
     print "\n\nMY CLASSIFIER RESULTS"
-    my_predictions = [classify(weights, instance) for instance in scaled_test_features]
+    scaled_test_features_plus_intercept = np.ones((scaled_test_features.shape[0], scaled_test_features.shape[1] + 1))
+    scaled_test_features_plus_intercept[:, 1:] = scaled_test_features
+
+    my_predictions = [classify(weights, instance) for instance in scaled_test_features_plus_intercept]
     print_accuracy(test_classes, my_predictions)
 
-def train(features, classes):
-    t = 1
-    weights = collections.defaultdict(float)
+def train(X, classes):
+    weights = np.zeros(((X.shape[1]), 1))
+    diff = stopping_val + 1.
 
-    for attributes, classification in zip(features, classes):
-        update(weights, attributes, float(classification), eta0 / (1 + t / float(len(features))))
+    total_ll = total_log_likelihood(X, classes, weights)
+    
+    t = 0
+    rows = range(len(X))
+    
+    while (diff > stopping_val) and (t < max_iterations):
+        print diff
+        for i in xrange(len(X)):
+            log_prob = 1 / (1 + np.exp(-X[i,:].dot(weights)))
+            error = classes[i] - log_prob
+            error_product = (X[i, :] * error).reshape(X.shape[1],1)
+            if L1_PENALTY or L2_PENALTY:
+                gradient = error_product.sum(axis=0).reshape(weights.shape)
+            if L1_PENALTY:
+                gradient -= np.sign(weights)
+            if L2_PENALTY:
+                gradient -= weights
+
+            if L1_PENALTY or L2_PENALTY:
+                weights = weights + eta0 * gradient
+            else:
+                weights = weights + eta0 * error_product
+
+        new_ll = total_log_likelihood(X, classes, weights)
+        diff = np.abs(new_ll - total_ll)
+        total_ll = new_ll
+
+        np.random.shuffle(rows)
+        X = X[rows, :]
+        new_classes = [None] * len(classes)
+        for i in xrange(len(classes)):
+            new_classes[i] = classes[rows[i]]
+        classes = new_classes
         t += 1
+    print "Stopped after", t, "iterations."
     return weights
 
 
-def update(weights, attributes, classification, eta):
-    a = sum([weights[x] for x in attributes])
-    g = ((1. / (1. + math.exp(-a))) - classification) if -100. < a else (0. - classification)
-    for x in attributes:
-        weights[x] -= eta * g
+def total_log_likelihood(X, Y, W):
+    probs = 1 / (1 + np.exp(-X.dot(W)))
+    ones_arr = np.ones((1, probs.shape[1]))
+    log_likelihoods = Y * np.log(probs + epsilon) + (ones_arr - Y) * np.log(ones_arr - probs + epsilon)
+    total_ll = -1 * log_likelihoods.sum()
+
+    if L1_PENALTY:
+        total_ll += np.abs(W).sum()
+    if L2_PENALTY:
+        total_ll += np.power(W, 2).sum() / 2
+    return total_ll
+
 
 
 def classify(W, X):
-    return 1 if 0. < sum([W[x] for x in X]) else 0
+    return 1 if 1 / (1 + np.exp(-X.dot(W))) > 0.5 else 0
 
 def print_accuracy(ground_truth, predictions):
     true_pos, true_neg, false_pos, false_neg = 0,0,0,0
