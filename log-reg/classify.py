@@ -51,7 +51,7 @@ def main():
     ### Test my classifier ###
     print "\n\nMY CLASSIFIER RESULTS"
     print "Trained for", t, "iterations."
-    print "Learing rate:", eta0
+    print "Learning rate:", eta0
     scaled_test_features_plus_intercept = np.ones((scaled_test_features.shape[0], scaled_test_features.shape[1] + 1))
     scaled_test_features_plus_intercept[:, 1:] = scaled_test_features
 
@@ -118,7 +118,7 @@ def print_accuracy(ground_truth, predictions):
         true_neg += (t == 0 and p == 0)
         false_neg += (t == 0 and p == 1)
             
-    print "Correctly classified malginant:", true_pos
+    print "Correctly classified malignant:", true_pos
     print "Incorrectly classified malignant:", false_pos
     print "Correctly classified benign:", true_neg
     print "Incorrectly classified benign:", false_neg
