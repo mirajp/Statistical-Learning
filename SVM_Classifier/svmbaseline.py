@@ -30,28 +30,32 @@ test = np.asarray(data, dtype=float)
 
 Y_train = Y_train.ravel()
 
-"""
-No longer splitting up training set, will compare different classifiers with the scoring function
-# Split the training and testing data 60:40 (seed with 42)
-X_train, X_test, Y_train, Y_test = train_test_split(X_train, Y_train, test_size=0.40, random_state=42)
-# 238 1's are now in Y_train
-"""
 
-"""
-clf = svm.SVC()
-clf.fit(X_train, Y_train)
-#score = clf.score(X_test, Y_test)
-#score = 0.992961532822
-test_labels = clf.decision_function(test)
-"""
+# Do feature reduction using PCA
+
+
+# Apply the dimensionality reduction to the training set and the test set
+
+
+
 
 tuned_parameters = [{'kernel': ['rbf'], 'gamma': [1e-3, 1e-4],
                      'C': [1, 10, 100, 1000]},
                     {'kernel': ['linear'], 'C': [1, 10, 100, 1000]}]
 #5 fold cross validation
-clf = GridSearchCV(SVC(C=1), tuned_parameters, cv=5, scoring='precision_macro', n_jobs=4)
+#clf = GridSearchCV(SVC(C=1), tuned_parameters, cv=5, scoring='precision_macro', n_jobs=4)
+# Swap this out for the previous grid search
+clf = svm.SVC()
 clf.fit(X_train, Y_train)
-print "Best parameters set found on development set (using precision scoring method):\n"
-print clf.best_params_
+#print "Best parameters set found on development set (using precision scoring method):\n"
+#print clf.best_params_
 #Ytest_predictions = clf.predict(X_test)
 #print(classification_report(Y_test, Ytest_predictions))
+
+# Get the metric values for the test data
+test_labels = clf.decision_function(test)
+test_ids = np.linspace(1, len(test_labels), num=len(test_labels), dtype=int)
+test_output = np.column_stack((test_ids,test_labels))
+
+#test_output = np.row_stack((["Id", "Prediction"],test_output))
+np.savetxt("testout_withoutpca_withoutgridsearch.csv", test_output, delimiter=",", fmt=("%u", "%.5f"), header="Id, Prediction")
