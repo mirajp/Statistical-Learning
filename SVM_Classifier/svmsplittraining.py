@@ -73,11 +73,11 @@ newY_train = Y_train_rare
 
 # Add proportionate amount of common class observations
 if (mode == 2):
-	#numCommonToAdd = 2*numRareClass # 66-33
-	#logFile.write("Adding 2x number of common class obs as rare\n")
+	numCommonToAdd = 2*numRareClass # 66-33
+	logFile.write("Adding 2x number of common class obs as rare\n")
 elif (mode == 3):
-	#numCommonToAdd = 3*numRareClass # 75-25
-	#logFile.write("Adding 3x number of common class obs as rare\n")
+	numCommonToAdd = 3*numRareClass # 75-25
+	logFile.write("Adding 3x number of common class obs as rare\n")
 else:
 	numCommonToAdd = numRareClass # 50-50
 	logFile.write("Adding same number of common class obs as rare\n")
