@@ -92,15 +92,13 @@ for obsIter in range(numRareClass):
 pca = PCA(n_components=numPCAComponents)
 pca.fit(newX_train)
 print "The top ", numPCAComponents, " components yielded the following variance ratios:\n"
-logFile.write("The top ", numPCAComponents, " components yielded the following variance ratios:\n")
+logFile.write("The top " + str(numPCAComponents) + " components yielded the following variance ratios:\n")
 
 print pca.explained_variance_ratio_
-logFile.write(pca.explained_variance_ratio_)
-logFile.write("\n")
+logFile.write(str(pca.explained_variance_ratio_) + "\n")
 
 print "Sum: ", (sum(pca.explained_variance_ratio_))
-logFile.write("Sum: ", (sum(pca.explained_variance_ratio_)))
-logFile.write("\n")
+logFile.write("Sum: " + str(sum(pca.explained_variance_ratio_)) + "\n")
 
 # Apply the dimensionality reduction to the training set and the test set
 newX_train = pca.fit_transform(newX_train)
@@ -116,8 +114,7 @@ clf.fit(newX_train, newY_train)
 print "Best parameters set found on development set (using precision scoring method):\n"
 logFile.write("Best parameters set found on development set (using precision scoring method):\n")
 print clf.best_params_
-logFile.write(clf.best_params_)
-logFile.write("\n")
+logFile.write(str(clf.best_params_) + "\n")
 
 # Get the metric values for the test data
 print "Evaluating metric scores for the test data"
