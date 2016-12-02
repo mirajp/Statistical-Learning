@@ -3,7 +3,7 @@ import random
 
 """
 Non-negative Matrix Factorization using Alternating Least Squares
-By Frank Longueira
+By Frank Longueira, Miraj Patel, Max Howald
 """
 
 
